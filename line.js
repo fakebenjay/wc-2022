@@ -268,7 +268,7 @@ var teams = {
   }]
 }
 
-var fates = ['adv', '1', '2', '3', '4']
+var fates = ['adv', '1', '2', '3', '4', 'win']
 
 d3.csv("data.csv")
   .then(function(csv) {
