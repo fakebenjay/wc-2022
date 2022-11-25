@@ -335,6 +335,10 @@ d3.csv("data.csv")
             .attr('y', function(d) {
               return yScale(d[0][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
             })
+            .lower()
+
+          d3.selectAll('.flag')
+            .raise()
 
 
           var lineDraw = d3.line()
