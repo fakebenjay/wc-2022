@@ -300,8 +300,19 @@ d3.csv("data.csv")
         .attr("transform", "translate(-10,0)")
         .style("text-anchor", "middle")
 
-
       // Render Y grid
+      svg.append('text')
+        .text(t.toUpperCase())
+        .style('font-size', height * .8 + 'px')
+        .attr('class', 'group-label')
+        .attr('x', width / 2 - margin.left)
+        .attr('y', function() {
+          return (height / 2) + (height * .25)
+        })
+        .style('fill', '#999999')
+        .style('opacity', .1)
+        .lower()
+
       svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`)
         .attr("class", "grid")
@@ -318,6 +329,8 @@ d3.csv("data.csv")
         .selectAll(".tick text")
         .style('font-size', '10pt')
         .raise()
+
+
 
       // Render lines g
       var linesG = svg.append("g")
@@ -358,6 +371,29 @@ d3.csv("data.csv")
             })
             .style('stroke', g.hex)
             .style('stroke-width', '4')
+
+          svg.select('.lines')
+            .data([csv.filter(d => !!d[`${g.code.toLowerCase()}${f.slice(0,1).toUpperCase() + f.slice(1)}`])])
+            .append('text')
+            .text(function(d) {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              return numeral(datapoint).format('0[.]00%')
+            })
+            .style('text-anchor', 'start')
+            .attr('class', `odds ${g.code.toLowerCase()}-${f} fate-${f}`)
+            .style('font-size', '8pt')
+            .attr('x', function(d) {
+              return xScale(d.length - 1) + 5
+            })
+            .attr('y', function(d) {
+
+              return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
+            })
+            .style('fill', g.hex)
+            .style('stroke', 'black')
+            .style('stroke-width', '.1')
+
         })
       })
     })
@@ -368,7 +404,7 @@ d3.csv("data.csv")
 
 function getRadio() {
   var val = document.querySelector('input[name=fate]:checked').value
-  d3.selectAll('.flag, .line')
+  d3.selectAll('.flag, .line, .odds')
     .style('display', 'none')
 
   d3.selectAll(`.${val}`)
