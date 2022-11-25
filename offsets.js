@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {
   top: 5,
-  right: 5,
+  right: 0,
   bottom: 5,
   left: 40
 }
