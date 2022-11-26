@@ -306,7 +306,7 @@ d3.csv("data.csv")
         .style('font-size', height * .8 + 'px')
         .attr('class', 'group-label')
         .attr('x', function(d) {
-          return margin.left + width / 2 - (this.getBoundingClientRect().width / 2) - margin.right
+          return margin.left + width / 2 - (this.getBoundingClientRect().width / 5)
         })
         .attr('y', function() {
           return (height * .4) - margin.top + margin.bottom + (this.getBoundingClientRect().height / 2)
