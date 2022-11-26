@@ -228,7 +228,7 @@ var teams = {
     'flag': '🇷🇸',
     'pot': '3',
     'rank': '25',
-    'hex': '#0C3E72'
+    'hex': '#374C8A'
   }, {
     'country': 'Switzerland',
     'code': 'SUI',
@@ -305,12 +305,19 @@ d3.csv("data.csv")
         .text(t.toUpperCase())
         .style('font-size', height * .8 + 'px')
         .attr('class', 'group-label')
-        .attr('x', width / 2 - margin.left)
+        .attr('x', function(d) {
+          return margin.left + width / 2 - (this.getBoundingClientRect().width / 2) - margin.right
+        })
         .attr('y', function() {
-          return (height / 2) + (height * .25)
+          return (height * .4) - margin.top + margin.bottom + (this.getBoundingClientRect().height / 2)
         })
         .style('fill', '#999999')
         .style('opacity', .1)
+        .style('text-anchor', 'middle')
+        .style('pointer-events', 'none')
+        .style('user-select', 'none')
+        .style('-ms-user-select', 'none')
+        .style('-webkit-user-select', 'none')
         .lower()
 
       svg.append("g")
