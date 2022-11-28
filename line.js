@@ -391,7 +391,11 @@ d3.csv("data.csv")
             .attr('class', `odds ${g.code.toLowerCase()}-${f} fate-${f}`)
             .style('font-size', '8pt')
             .attr('x', function(d) {
-              return xScale(d.length - 1) + 5
+              if (d.length === 3) {
+                return xScale(d.length - 1.5) + 5
+              } else {
+                return xScale(d.length - 2) + 5
+              }
             })
             .attr('y', function(d) {
 
