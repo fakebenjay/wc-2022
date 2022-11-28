@@ -170,7 +170,7 @@ var teams = {
     'flag': '🇯🇵',
     'pot': '3',
     'rank': '23',
-    'hex': '#011C53'
+    'hex': '#020372'
   }, {
     'country': 'Spain',
     'code': 'ESP',
