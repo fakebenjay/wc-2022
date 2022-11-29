@@ -385,25 +385,63 @@ d3.csv("data.csv")
             .text(function(d) {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return numeral(datapoint).format('0[.]00%')
+              if (d.length == 5 && f === 'win' && datapoint > 0) {
+                return g.flag + numeral(datapoint).format('0[.]00%')
+              } else if (d.length == 5 && f === 'win' && datapoint == 0) {
+                return ''
+              } else {
+                return numeral(datapoint).format('0[.]00%')
+              }
             })
-            .style('text-anchor', 'start')
+            .style('text-anchor', (d) => {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              return d.length == 5 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
+            })
             .attr('class', `odds ${g.code.toLowerCase()}-${f} fate-${f}`)
-            .style('font-size', '8pt')
+            .style('font-size', (d) => {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              return d.length == 5 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
+            })
             .attr('x', function(d) {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+
               if (d.length === 3) {
                 return xScale(d.length - 1.5) + 5
+              } else if (d.length == 5 && f === 'win' && datapoint > 0) {
+                return xScale(1.5)
               } else {
                 return xScale(d.length - 2) + 5
               }
             })
             .attr('y', function(d) {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              var firstpoint = latest[g.code.toLowerCase() + '1']
+              var secondpoint = latest[g.code.toLowerCase() + '2']
 
-              return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
+              if (d.length == 5 && f === 'win' && firstpoint == 1) {
+                return yScale(.6)
+              } else if (d.length == 5 && f === 'win' && secondpoint == 1) {
+                return yScale(.3)
+              } else {
+                return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
+              }
             })
             .style('fill', g.hex)
-            .style('stroke', 'black')
-            .style('stroke-width', '.1')
+            .style('stroke', (d) => {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              return d.length == 5 && f === 'win' && datapoint > 0 ? 'none' : 'black'
+            })
+            .style('stroke-width', (d) => {
+              var latest = d[d.length - 1]
+              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+              return d.length == 5 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
+            })
+
 
         })
       })
