@@ -2,7 +2,7 @@
 var margin = {
   top: 10,
   right: 5,
-  bottom: 5,
+  bottom: 11,
   left: 40
 }
 

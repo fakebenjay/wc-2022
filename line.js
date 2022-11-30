@@ -13,6 +13,7 @@ var xScale = d3.scaleLinear()
 // Define X axis
 var xAxis = d3.axisBottom(xScale)
   .ticks(4)
+  .tickFormat('')
 
 // Add Y scale
 

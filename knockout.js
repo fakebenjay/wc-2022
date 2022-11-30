@@ -5,7 +5,7 @@
 //   .attr('id', 'tooltip')
 
 var thisGroup
-var marginBottom = margin.bottom + 20
+var marginBottom = margin.bottom + 15
 var marginRight = margin.right + 5
 var koHeight = 1.5 * height
 
@@ -88,26 +88,12 @@ var teams = {
     'rank': '4',
     'hex': '#74ACDF'
   }, {
-    'country': 'Mexico',
-    'code': 'MEX',
-    'flag': '🇲🇽',
-    'pot': '2',
-    'rank': '9',
-    'hex': '#006845'
-  }, {
     'country': 'Poland',
     'code': 'POL',
     'flag': '🇵🇱',
     'pot': '3',
     'rank': '26',
     'hex': '#DD0C39'
-  }, {
-    'country': 'Saudi Arabia',
-    'code': 'KSA',
-    'flag': '🇸🇦',
-    'pot': '4',
-    'rank': '49',
-    'hex': '#29A882'
   }],
   'd': [{
     'country': 'Australia',
@@ -386,6 +372,7 @@ d3.csv("data-ko.csv")
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
               return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
             })
+            .lower()
 
 
         })
