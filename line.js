@@ -129,12 +129,26 @@ var teams = {
     'rank': '42',
     'hex': '#FFCD00'
   }, {
+    'country': 'Denmark',
+    'code': 'DEN',
+    'flag': '🇩🇰',
+    'pot': '2',
+    'rank': '11',
+    'hex': '#C9072A'
+  }, {
     'country': 'France',
     'code': 'FRA',
     'flag': '🇫🇷',
     'pot': '1',
     'rank': '3',
     'hex': '#002153'
+  }, {
+    'country': 'Tunisia',
+    'code': 'TUN',
+    'flag': '🇹🇳',
+    'pot': '3',
+    'rank': '35',
+    'hex': '#e70013'
   }],
   'e': [{
     'country': 'Costa Rica',
