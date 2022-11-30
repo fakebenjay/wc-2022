@@ -7,6 +7,7 @@
 var thisGroup
 var marginBottom = margin.bottom + 20
 var marginRight = margin.right + 5
+var koHeight = 1.5 * height
 
 var xScale = d3.scaleLinear()
   .range([margin.left, width - marginRight])
@@ -37,7 +38,7 @@ var colorScale = d3.scaleLinear()
 
 var yScale = d3.scaleLinear()
   .domain([1, 0])
-  .range([0, height - (margin.top + marginBottom)])
+  .range([0, koHeight - (margin.top + marginBottom)])
 
 // Define Y axis and format tick marks
 var yAxis = d3.axisLeft(yScale)
@@ -243,7 +244,7 @@ d3.csv("data-ko.csv")
     //Create svg element
     var svg = d3.select(`#groups .chart .group-ko`)
       .append("svg")
-      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('viewBox', `0 0 ${width} ${koHeight}`)
       .attr('preserveAspectRatio', `xMidYMid meet`)
     // Render Y grid
     svg.append("g")
@@ -276,7 +277,7 @@ d3.csv("data-ko.csv")
 
     //Render X axis
     svg.append("g")
-      .attr("transform", `translate(0,${height-marginBottom})`)
+      .attr("transform", `translate(0,${koHeight-marginBottom})`)
       .attr('class', 'x-axis')
       .style('color', 'black')
       .call(xAxis)
