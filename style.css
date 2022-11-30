@@ -92,6 +92,11 @@ svg {
   display: inline-block;
 }
 
+.group-ko {
+  width: 100%;
+  display: inline-block;
+}
+
 .line {
   fill: none;
   stroke-width: 3;

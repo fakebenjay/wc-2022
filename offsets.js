@@ -15,7 +15,7 @@ var dateOptions = {
 
 var winWidth = window.innerWidth
 var regWidth = document.getElementById('groups').offsetWidth
-var width = document.querySelector(`#groups .chart .group-a`).offsetWidth
+var width = document.querySelector(`#groups .chart .group`).offsetWidth
 var height = width * .6;
 
 var tickNums = 5

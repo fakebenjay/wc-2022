@@ -5,14 +5,29 @@
 //   .attr('id', 'tooltip')
 
 var thisGroup
+var marginBottom = margin.bottom + 20
+var marginRight = margin.right + 5
 
 var xScale = d3.scaleLinear()
-  .range([margin.left, width - margin.right])
-  .domain([0, 3])
+  .range([margin.left, width - marginRight])
+  .domain([0, 4])
 
 // Define X axis
 var xAxis = d3.axisBottom(xScale)
   .ticks(4)
+  .tickFormat((d) => {
+    if (d == 0) {
+      return '16'
+    } else if (d == 1) {
+      return 'Quarters'
+    } else if (d == 2) {
+      return 'Semis'
+    } else if (d == 3) {
+      return 'Final'
+    } else {
+      return '🏆'
+    }
+  })
 
 // Add Y scale
 
@@ -22,7 +37,7 @@ var colorScale = d3.scaleLinear()
 
 var yScale = d3.scaleLinear()
   .domain([1, 0])
-  .range([0, height - (margin.top + margin.bottom)])
+  .range([0, height - (margin.top + marginBottom)])
 
 // Define Y axis and format tick marks
 var yAxis = d3.axisLeft(yScale)
@@ -30,31 +45,17 @@ var yAxis = d3.axisLeft(yScale)
   .tickFormat(d => numeral(d).format('0%'))
 
 var yGrid = d3.axisLeft(yScale)
-  .tickSize(-width + margin.right + margin.left, 0, 0)
+  .tickSize(-width + marginRight + margin.left, 0, 0)
   .tickFormat("")
 
 var teams = {
   'a': [{
-    'country': 'Ecuador',
-    'code': 'ECU',
-    'flag': '🇪🇨',
-    'pot': '4',
-    'rank': '46',
-    'hex': '#ffdd00'
-  }, {
     'country': 'Netherlands',
     'code': 'NED',
     'flag': '🇳🇱',
     'pot': '2',
     'rank': '10',
     'hex': '#EB6920'
-  }, {
-    'country': 'Qatar',
-    'code': 'QAT',
-    'flag': '🇶🇦',
-    'pot': '1',
-    'rank': '51',
-    'hex': '#8A1538'
   }, {
     'country': 'Senegal',
     'code': 'SEN',
@@ -71,26 +72,12 @@ var teams = {
     'rank': '5',
     'hex': '#CF081F'
   }, {
-    'country': 'Iran',
-    'code': 'IRN',
-    'flag': '🇮🇷',
-    'pot': '3',
-    'rank': '21',
-    'hex': '#239f40'
-  }, {
     'country': 'United States',
     'code': 'USA',
     'flag': '🇺🇸󠁮󠁧󠁿',
     'pot': '2',
     'rank': '15',
     'hex': '#3C3B6E'
-  }, {
-    'country': 'Wales',
-    'code': 'WAL',
-    'flag': '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
-    'pot': '4',
-    'rank': '18',
-    'hex': '#174A3F'
   }],
   'c': [{
     'country': 'Argentina',
@@ -187,13 +174,6 @@ var teams = {
     'rank': '2',
     'hex': '#F5D324'
   }, {
-    'country': 'Canada',
-    'code': 'CAN',
-    'flag': '🇨🇦',
-    'pot': '3',
-    'rank': '38',
-    'hex': '#D62718'
-  }, {
     'country': 'Croatia',
     'code': 'CRO',
     'flag': '🇭🇷',
@@ -268,80 +248,60 @@ var teams = {
   }]
 }
 
-var fates = ['adv', '1', '2', '3', '4', 'win']
+var fates = ['adv', '1', '2', '3', 'win']
 
-d3.csv("data.csv")
+d3.csv("data-ko.csv")
   .then(function(csv) {
 
+
+    //Create svg element
+    var svg = d3.select(`#groups .chart .group-ko`)
+      .append("svg")
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', `xMidYMid meet`)
+    // Render Y grid
+    svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr("class", "grid")
+      .style('color', '#777777')
+      .style('opacity', '0.3')
+      .call(yGrid)
+
+    // Render Y axis
+    svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr('class', 'y-axis')
+      .call(yAxis)
+      .selectAll("text")
+      .style('font-size', () => {
+        return window.innerWidth > 767 ? '9pt' : '8pt'
+      })
+      .style('color', 'black')
+      .attr("transform", "translate(-10,0)")
+      .style("text-anchor", "middle")
+
+    // Render Y grid
+    svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr("class", "grid")
+      .style('color', '#777777')
+      .style('opacity', '0.3')
+      .call(yGrid)
+
+    //Render X axis
+    svg.append("g")
+      .attr("transform", `translate(0,${height-marginBottom})`)
+      .attr('class', 'x-axis')
+      .style('color', 'black')
+      .call(xAxis)
+      .selectAll(".tick text")
+      .style('font-size', '10pt')
+      .raise()
+
+    // Render lines g
+    var linesG = svg.append("g")
+      .attr('class', 'lines')
     Object.keys(teams).forEach(function(t) {
-      //Create svg element
-      var svg = d3.select(`#groups .chart .group-${t}`)
-        .append("svg")
-        .attr('viewBox', `0 0 ${width} ${height}`)
-        .attr('preserveAspectRatio', `xMidYMid meet`)
-      // Render Y grid
-      svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`)
-        .attr("class", "grid")
-        .style('color', '#777777')
-        .style('opacity', '0.3')
-        .call(yGrid)
-
-      // Render Y axis
-      svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`)
-        .attr('class', 'y-axis')
-        .call(yAxis)
-        .selectAll("text")
-        .style('font-size', () => {
-          return window.innerWidth > 767 ? '9pt' : '8pt'
-        })
-        .style('color', 'black')
-        .attr("transform", "translate(-10,0)")
-        .style("text-anchor", "middle")
-
-      // Render Y grid
-      svg.append('text')
-        .text(t.toUpperCase())
-        .style('font-size', height * .8 + 'px')
-        .attr('class', 'group-label')
-        .attr('x', function(d) {
-          return margin.left + width / 2 - (this.getBoundingClientRect().width / 5)
-        })
-        .attr('y', function() {
-          return (height * .4) - margin.top + margin.bottom + (this.getBoundingClientRect().height / 2)
-        })
-        .style('fill', '#999999')
-        .style('opacity', .1)
-        .style('text-anchor', 'middle')
-        .style('pointer-events', 'none')
-        .style('user-select', 'none')
-        .style('-ms-user-select', 'none')
-        .style('-webkit-user-select', 'none')
-        .lower()
-
-      svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`)
-        .attr("class", "grid")
-        .style('color', '#777777')
-        .style('opacity', '0.3')
-        .call(yGrid)
-
-      //Render X axis
-      svg.append("g")
-        .attr("transform", `translate(0,${height-margin.bottom})`)
-        .attr('class', 'x-axis')
-        .style('color', 'black')
-        .call(xAxis)
-        .selectAll(".tick text")
-        .style('font-size', '10pt')
-        .raise()
-
-
-
-      // Render lines g
-      var linesG = svg.append("g")
-        .attr('class', 'lines')
 
       fates.forEach(function(f) {
         teams[t].forEach(function(g) {
@@ -383,9 +343,9 @@ d3.csv("data.csv")
             .text(function(d) {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              if (d.length == 5 && f === 'win' && datapoint > 0) {
+              if (d.length == 4 && f === 'win' && datapoint > 0) {
                 return g.flag + numeral(datapoint).format('0[.]00%')
-              } else if (d.length == 5 && f === 'win' && datapoint == 0) {
+              } else if (d.length == 4 && f === 'win' && datapoint == 0) {
                 return ''
               } else {
                 return numeral(datapoint).format('0[.]00%')
@@ -394,13 +354,13 @@ d3.csv("data.csv")
             .style('text-anchor', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 5 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
+              return d.length == 4 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
             })
             .attr('class', `odds ${g.code.toLowerCase()}-${f} fate-${f}`)
             .style('font-size', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 5 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
+              return d.length == 4 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
             })
             .attr('x', function(d) {
               var latest = d[d.length - 1]
@@ -408,10 +368,10 @@ d3.csv("data.csv")
 
               if (d.length === 3) {
                 return xScale(d.length - 1.5) + 5
-              } else if (d.length == 5 && f === 'win' && datapoint > 0) {
+              } else if (d.length == 4 && f === 'win' && datapoint > 0) {
                 return xScale(1.5)
               } else {
-                return xScale(d.length - 2) + 5
+                return xScale(d.length - 1) + 5
               }
             })
             .attr('y', function(d) {
@@ -420,9 +380,9 @@ d3.csv("data.csv")
               var firstpoint = latest[g.code.toLowerCase() + '1']
               var secondpoint = latest[g.code.toLowerCase() + '2']
 
-              if (d.length == 5 && f === 'win' && firstpoint == 1) {
+              if (d.length == 4 && f === 'win' && firstpoint == 1) {
                 return yScale(.6)
-              } else if (d.length == 5 && f === 'win' && secondpoint == 1) {
+              } else if (d.length == 4 && f === 'win' && secondpoint == 1) {
                 return yScale(.3)
               } else {
                 return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
@@ -432,12 +392,12 @@ d3.csv("data.csv")
             .style('stroke', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 5 && f === 'win' && datapoint > 0 ? 'none' : 'black'
+              return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : 'black'
             })
             .style('stroke-width', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 5 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
+              return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
             })
 
 

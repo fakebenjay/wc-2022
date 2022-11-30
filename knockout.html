@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphics template</title>
+  <script type="text/javascript" src="https://assets.law360news.com/1548000/1548583/d3.v5.min.js"></script>
+  <script src="https://assets.law360news.com/1548000/1548583/numeral.min.js"></script>
+  <script type="text/javascript" src="tooltippo.js"></script>
+  <script type="text/javascript" src="offsets.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="law360.css">
+  <!-- <link rel="stylesheet" href="law360.css"> -->
+  </link>
+</head>
+
+<body>
+  <span class="buttons-radio">
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-adv" name="fate" value="fate-adv" checked>&nbsp;<label for="fate-adv">Next round</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-1" name="fate" value="fate-1">&nbsp;<label for="fate-1">Quaterfinals</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-2" name="fate" value="fate-2">&nbsp;<label for="fate-2">Semifinals</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-3" name="fate" value="fate-3">&nbsp;<label for="fate-3">Finals</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-win" name="fate" value="fate-win">&nbsp;<label for="fate-win">🏆</label>
+    </span>
+  </span>
+  <div id="article">
+    <div class="d3-container" id="groups">
+      <div class="chart">
+        <span class="group group-ko"></span>
+      </div>
+    </div>
+    <script type="text/javascript" src="knockout.js" defer></script>
+  </div>
+</body>
+
+</html>
