@@ -111,20 +111,6 @@ var teams = {
     'hex': '#002153'
   }],
   'e': [{
-    'country': 'Costa Rica',
-    'code': 'CRC',
-    'flag': '🇨🇷',
-    'pot': '4',
-    'rank': '31',
-    'hex': '#E91115'
-  }, {
-    'country': 'Germany',
-    'code': 'GER',
-    'flag': '🇩🇪',
-    'pot': '2',
-    'rank': '12',
-    'hex': '#000000'
-  }, {
     'country': 'Japan',
     'code': 'JPN',
     'flag': '🇯🇵',
