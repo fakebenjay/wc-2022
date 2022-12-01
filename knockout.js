@@ -140,13 +140,6 @@ var teams = {
     'hex': '#FFB700'
   }],
   'f': [{
-    'country': 'Belgium',
-    'code': 'BEL',
-    'flag': '🇧🇪',
-    'pot': '1',
-    'rank': '2',
-    'hex': '#F5D324'
-  }, {
     'country': 'Croatia',
     'code': 'CRO',
     'flag': '🇭🇷',
@@ -284,6 +277,7 @@ d3.csv("data-ko.csv")
             .attr('class', `flag ${g.code.toLowerCase()}-${f} fate-${f}`)
             .attr('x', margin.left / 2)
             .attr('y', function(d) {
+              console.log(d)
               return yScale(d[0][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
             })
             .lower()
@@ -373,8 +367,6 @@ d3.csv("data-ko.csv")
               return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
             })
             .lower()
-
-
         })
       })
     })
