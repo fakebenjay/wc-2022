@@ -452,6 +452,7 @@ d3.csv("data.csv")
 
 function getRadio() {
   var val = document.querySelector('input[name=fate]:checked').value
+
   d3.selectAll('.flag, .line, .odds')
     .style('display', 'none')
 

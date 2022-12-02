@@ -15,23 +15,37 @@
 </head>
 
 <body>
-  <span class="buttons-radio">
+  <div class="buttons-radio">
     <span style="display:inline-block;">
       <input type="radio" id="fate-adv" name="fate" value="fate-adv" checked>&nbsp;<label for="fate-adv">Next round</label>
     </span>&nbsp;
     <span style="display:inline-block;">
-      <input type="radio" id="fate-1" name="fate" value="fate-1">&nbsp;<label for="fate-1">Quaterfinals</label>
+      <input type="radio" id="fate-1" name="fate" value="fate-1">&nbsp;<label for="fate-1">Round of 16</label>
     </span>&nbsp;
     <span style="display:inline-block;">
-      <input type="radio" id="fate-2" name="fate" value="fate-2">&nbsp;<label for="fate-2">Semifinals</label>
+      <input type="radio" id="fate-2" name="fate" value="fate-2">&nbsp;<label for="fate-1">Quaterfinals</label>
     </span>&nbsp;
     <span style="display:inline-block;">
-      <input type="radio" id="fate-3" name="fate" value="fate-3">&nbsp;<label for="fate-3">Finals</label>
+      <input type="radio" id="fate-3" name="fate" value="fate-3">&nbsp;<label for="fate-2">Semifinals</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="fate-4" name="fate" value="fate-4">&nbsp;<label for="fate-3">Finals</label>
     </span>&nbsp;
     <span style="display:inline-block;">
       <input type="radio" id="fate-win" name="fate" value="fate-win">&nbsp;<label for="fate-win">🏆</label>
     </span>
-  </span>
+  </div>
+  <div class="buttons-radio">
+    <span style="display:inline-block;">
+      <input type="radio" id="teams-all" name="teams" value="teams-all" checked>&nbsp;<label for="teams-all">All teams</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="teams-active" name="teams" value="teams-active">&nbsp;<label for="teams-active">Active teams</label>
+    </span>&nbsp;
+    <span style="display:inline-block;">
+      <input type="radio" id="teams-phase" name="teams" value="teams-phase">&nbsp;<label for="teams-phase">Teams at selected stage</label>
+    </span>&nbsp;
+  </div>
   <div id="article">
     <div class="d3-container" id="groups">
       <div class="chart">

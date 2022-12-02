@@ -9,21 +9,30 @@ var marginBottom = margin.bottom + 15
 var marginRight = margin.right + 5
 var koHeight = 1.5 * height
 
+var currentStage = 4
 var xScale = d3.scaleLinear()
   .range([margin.left, width - marginRight])
-  .domain([0, 4])
+  .domain([0, 8])
 
 // Define X axis
 var xAxis = d3.axisBottom(xScale)
-  .ticks(4)
+  .ticks(8)
   .tickFormat((d) => {
     if (d == 0) {
-      return '16'
+      return '🎬'
     } else if (d == 1) {
-      return 'Quarters'
+      return 'GS 1'
     } else if (d == 2) {
-      return 'Semis'
+      return 'GS 2'
     } else if (d == 3) {
+      return 'GS 3'
+    } else if (d == 4) {
+      return '16'
+    } else if (d == 5) {
+      return 'Quarters'
+    } else if (d == 6) {
+      return 'Semis'
+    } else if (d == 7) {
       return 'Final'
     } else {
       return '🏆'
@@ -51,19 +60,37 @@ var yGrid = d3.axisLeft(yScale)
 
 var teams = {
   'a': [{
+    'country': 'Ecuador',
+    'code': 'ECU',
+    'flag': '🇪🇨',
+    'pot': '4',
+    'rank': '46',
+    'hex': '#ffdd00',
+    'stage': '3'
+  }, {
     'country': 'Netherlands',
     'code': 'NED',
     'flag': '🇳🇱',
     'pot': '2',
     'rank': '10',
-    'hex': '#EB6920'
+    'hex': '#EB6920',
+    'stage': '4'
+  }, {
+    'country': 'Qatar',
+    'code': 'QAT',
+    'flag': '🇶🇦',
+    'pot': '1',
+    'rank': '51',
+    'hex': '#8A1538',
+    'stage': '3'
   }, {
     'country': 'Senegal',
     'code': 'SEN',
     'flag': '🇸🇳',
     'pot': '3',
     'rank': '20',
-    'hex': '#00863D'
+    'hex': '#00863D',
+    'stage': '4'
   }],
   'b': [{
     'country': 'England',
@@ -71,14 +98,32 @@ var teams = {
     'flag': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
     'pot': '1',
     'rank': '5',
-    'hex': '#CF081F'
+    'hex': '#CF081F',
+    'stage': '4'
+  }, {
+    'country': 'Iran',
+    'code': 'IRN',
+    'flag': '🇮🇷',
+    'pot': '3',
+    'rank': '21',
+    'hex': '#239f40',
+    'stage': '3'
   }, {
     'country': 'United States',
     'code': 'USA',
     'flag': '🇺🇸󠁮󠁧󠁿',
     'pot': '2',
     'rank': '15',
-    'hex': '#3C3B6E'
+    'hex': '#3C3B6E',
+    'stage': '4'
+  }, {
+    'country': 'Wales',
+    'code': 'WAL',
+    'flag': '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
+    'pot': '4',
+    'rank': '18',
+    'hex': '#174A3F',
+    'stage': '3'
   }],
   'c': [{
     'country': 'Argentina',
@@ -86,14 +131,32 @@ var teams = {
     'flag': '🇦🇷',
     'pot': '1',
     'rank': '4',
-    'hex': '#74ACDF'
+    'hex': '#74ACDF',
+    'stage': '4'
+  }, {
+    'country': 'Mexico',
+    'code': 'MEX',
+    'flag': '🇲🇽',
+    'pot': '2',
+    'rank': '9',
+    'hex': '#006845',
+    'stage': '3'
   }, {
     'country': 'Poland',
     'code': 'POL',
     'flag': '🇵🇱',
     'pot': '3',
     'rank': '26',
-    'hex': '#DD0C39'
+    'hex': '#DD0C39',
+    'stage': '4'
+  }, {
+    'country': 'Saudi Arabia',
+    'code': 'KSA',
+    'flag': '🇸🇦',
+    'pot': '4',
+    'rank': '49',
+    'hex': '#29A882',
+    'stage': '3'
   }],
   'd': [{
     'country': 'Australia',
@@ -101,44 +164,98 @@ var teams = {
     'flag': '🇦🇺',
     'pot': '4',
     'rank': '42',
-    'hex': '#FFCD00'
+    'hex': '#FFCD00',
+    'stage': '4'
+  }, {
+    'country': 'Denmark',
+    'code': 'DEN',
+    'flag': '🇩🇰',
+    'pot': '2',
+    'rank': '11',
+    'hex': '#C9072A',
+    'stage': '3'
   }, {
     'country': 'France',
     'code': 'FRA',
     'flag': '🇫🇷',
     'pot': '1',
     'rank': '3',
-    'hex': '#002153'
+    'hex': '#002153',
+    'stage': '4'
+  }, {
+    'country': 'Tunisia',
+    'code': 'TUN',
+    'flag': '🇹🇳',
+    'pot': '3',
+    'rank': '35',
+    'hex': '#e70013',
+    'stage': '3'
   }],
   'e': [{
+    'country': 'Costa Rica',
+    'code': 'CRC',
+    'flag': '🇨🇷',
+    'pot': '4',
+    'rank': '31',
+    'hex': '#E91115',
+    'stage': '3'
+  }, {
+    'country': 'Germany',
+    'code': 'GER',
+    'flag': '🇩🇪',
+    'pot': '2',
+    'rank': '12',
+    'hex': '#000000',
+    'stage': '3'
+  }, {
     'country': 'Japan',
     'code': 'JPN',
     'flag': '🇯🇵',
     'pot': '3',
     'rank': '23',
-    'hex': '#020372'
+    'hex': '#020372',
+    'stage': '4'
   }, {
     'country': 'Spain',
     'code': 'ESP',
     'flag': '🇪🇸',
     'pot': '1',
     'rank': '7',
-    'hex': '#FFB700'
+    'hex': '#FFB700',
+    'stage': '4'
   }],
   'f': [{
+    'country': 'Belgium',
+    'code': 'BEL',
+    'flag': '🇧🇪',
+    'pot': '1',
+    'rank': '2',
+    'hex': '#F5D324',
+    'stage': '3'
+  }, {
+    'country': 'Canada',
+    'code': 'CAN',
+    'flag': '🇨🇦',
+    'pot': '3',
+    'rank': '38',
+    'hex': '#D62718',
+    'stage': '3'
+  }, {
     'country': 'Croatia',
     'code': 'CRO',
     'flag': '🇭🇷',
     'pot': '2',
     'rank': '16',
-    'hex': '#171796'
+    'hex': '#171796',
+    'stage': '4'
   }, {
     'country': 'Morocco',
     'code': 'MAR',
     'flag': '🇲🇦',
     'pot': '3',
     'rank': '24',
-    'hex': '#006233'
+    'hex': '#006233',
+    'stage': '4'
   }],
   'g': [{
     'country': 'Brazil',
@@ -146,28 +263,32 @@ var teams = {
     'flag': '🇧🇷',
     'pot': '1',
     'rank': '1',
-    'hex': '#FEE000'
+    'hex': '#FEE000',
+    'stage': '4'
   }, {
     'country': 'Cameroon',
     'code': 'CMR',
     'flag': '🇨🇲',
     'pot': '4',
     'rank': '37',
-    'hex': '#054C40'
+    'hex': '#054C40',
+    'stage': '4'
   }, {
     'country': 'Serbia',
     'code': 'SRB',
     'flag': '🇷🇸',
     'pot': '3',
     'rank': '25',
-    'hex': '#374C8A'
+    'hex': '#374C8A',
+    'stage': '4'
   }, {
     'country': 'Switzerland',
     'code': 'SUI',
     'flag': '🇨🇭',
     'pot': '2',
     'rank': '14',
-    'hex': '#FF0000'
+    'hex': '#FF0000',
+    'stage': '4'
   }],
   'h': [{
     'country': 'Ghana',
@@ -175,32 +296,36 @@ var teams = {
     'flag': '🇬🇭',
     'pot': '4',
     'rank': '61',
-    'hex': '#F2D900'
+    'hex': '#F2D900',
+    'stage': '4'
   }, {
     'country': 'Portugal',
     'code': 'POR',
     'flag': '🇵🇹',
     'pot': '1',
     'rank': '8',
-    'hex': '#006600'
+    'hex': '#006600',
+    'stage': '4'
   }, {
     'country': 'South Korea',
     'code': 'KOR',
     'flag': '🇰🇷',
     'pot': '3',
     'rank': '29',
-    'hex': '#C00C2F'
+    'hex': '#C00C2F',
+    'stage': '4'
   }, {
     'country': 'Uruguay',
     'code': 'URU',
     'flag': '🇺🇾',
     'pot': '2',
     'rank': '13',
-    'hex': '#71A5D5'
+    'hex': '#71A5D5',
+    'stage': '4'
   }]
 }
 
-var fates = ['adv', '1', '2', '3', 'win']
+var fates = ['adv', '1', '2', '3', '4', 'win']
 
 d3.csv("data-ko.csv")
   .then(function(csv) {
@@ -260,7 +385,10 @@ d3.csv("data-ko.csv")
           svg.append('text')
             .data([csv.filter(d => !!d[`${g.code.toLowerCase()}${f.slice(0,1).toUpperCase() + f.slice(1)}`])])
             .text(g.flag)
-            .attr('class', `flag ${g.code.toLowerCase()}-${f} fate-${f}`)
+            .attr("class", function(d) {
+              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              return `flag ${g.code.toLowerCase()}-${f} fate-${f}${out}`
+            })
             .attr('x', margin.left / 2)
             .attr('y', function(d) {
               console.log(d)
@@ -283,7 +411,10 @@ d3.csv("data-ko.csv")
           svg.select('.lines')
             .data([csv.filter(d => !!d[`${g.code.toLowerCase()}${f.slice(0,1).toUpperCase() + f.slice(1)}`])])
             .append("path")
-            .attr("class", `line ${g.code.toLowerCase()}-${f} fate-${f}`)
+            .attr("class", function(d) {
+              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              return `line ${g.code.toLowerCase()}-${f} fate-${f}${out}`
+            })
             .attr("d", function(d) {
               return lineDraw(d)
             })
@@ -296,35 +427,40 @@ d3.csv("data-ko.csv")
             .text(function(d) {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              if (d.length == 4 && f === 'win' && datapoint > 0) {
+
+              if (d.length == 8 && f === 'win' && datapoint > 0) {
                 return g.flag + numeral(datapoint).format('0[.]00%')
-              } else if (d.length == 4 && f === 'win' && datapoint == 0) {
+              } else if (d.length == 8 && f === 'win' && datapoint == 0) {
                 return ''
               } else {
-                return numeral(datapoint).format('0[.]00%')
+                return numeral(datapoint).format('0[.]00%') + ' ' + g.flag
               }
             })
             .style('text-anchor', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 4 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
+              return d.length == 8 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
             })
-            .attr('class', `odds ${g.code.toLowerCase()}-${f} fate-${f}`)
+            .attr("class", function(d) {
+              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              return `odds ${g.code.toLowerCase()}-${f} fate-${f}${out}`
+            })
             .style('font-size', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 4 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
+              return d.length == 8 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
             })
             .attr('x', function(d) {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
 
               if (d.length === 3) {
-                return xScale(d.length - 1.5) + 5
-              } else if (d.length == 4 && f === 'win' && datapoint > 0) {
-                return xScale(1.5)
+                return xScale(d.length - 2.5) + 5
+              } else if (d.length == 8 && f === 'win' && datapoint > 0) {
+                return xScale(3.5)
               } else {
-                return xScale(d.length - 1) + 5
+                var subtract = d.length > 5 ? 3 : 2
+                return xScale(d.length - subtract) + 5
               }
             })
             .attr('y', function(d) {
@@ -333,29 +469,39 @@ d3.csv("data-ko.csv")
               var firstpoint = latest[g.code.toLowerCase() + '1']
               var secondpoint = latest[g.code.toLowerCase() + '2']
 
-              if (d.length == 4 && f === 'win' && firstpoint == 1) {
+              if (d.length == 8 && f === 'win' && firstpoint == 1) {
                 return yScale(.6)
-              } else if (d.length == 4 && f === 'win' && secondpoint == 1) {
+              } else if (d.length == 8 && f === 'win' && secondpoint == 1) {
                 return yScale(.3)
               } else {
                 return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
               }
             })
             .style('fill', g.hex)
-            .style('stroke', (d) => {
-              var latest = d[d.length - 1]
-              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : 'black'
-            })
-            .style('stroke-width', (d) => {
-              var latest = d[d.length - 1]
-              var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 4 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
-            })
+            // .style('stroke', (d) => {
+            //   var latest = d[d.length - 1]
+            //   var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+            //   return d.length == 8 && f === 'win' && datapoint > 0 ? 'none' : 'black'
+            // })
+            // .style('stroke-width', (d) => {
+            //   var latest = d[d.length - 1]
+            //   var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
+            //   return d.length == 8 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
+            // })
             .lower()
+
+
+
         })
       })
     })
+    svg.append('line')
+      .attr('x1', xScale(3))
+      .attr('x2', xScale(3))
+      .attr('y1', yScale(0) + margin.top)
+      .attr('y2', yScale(1) + margin.top)
+      .style('stroke', 'black')
+      .style('stroke-width', '4px')
   })
   .then(function() {
     getRadio()
@@ -363,11 +509,30 @@ d3.csv("data-ko.csv")
 
 function getRadio() {
   var val = document.querySelector('input[name=fate]:checked').value
+  var teamVal = document.querySelector('input[name=teams]:checked').value
+
   d3.selectAll('.flag, .line, .odds')
     .style('display', 'none')
 
   d3.selectAll(`.${val}`)
     .style('display', 'block')
+
+  if (teamVal === 'teams-phase') {
+    if (val !== 'fate-win' && val !== 'fate-adv') {
+      var selectStage = parseInt(val.split('-')[1]) + 3
+    }
+
+    for (let i = 0; i < selectStage + 1; i++) {
+      d3.selectAll(`.odds.${val}.out-${i}, .line.${val}.out-${i}, .flag.${val}.out-${i}`)
+        .style('display', 'none')
+    }
+  } else if (teamVal === 'teams-active') {
+    d3.selectAll(`.odds.out, .line.out, .flag.out`)
+      .style('display', 'none')
+  }
+
+
+
 }
 
 getRadio()
