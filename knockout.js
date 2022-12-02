@@ -272,7 +272,7 @@ var teams = {
     'pot': '4',
     'rank': '37',
     'hex': '#054C40',
-    'stage': '4'
+    'stage': '3'
   }, {
     'country': 'Serbia',
     'code': 'SRB',
@@ -280,7 +280,7 @@ var teams = {
     'pot': '3',
     'rank': '25',
     'hex': '#374C8A',
-    'stage': '4'
+    'stage': '3'
   }, {
     'country': 'Switzerland',
     'code': 'SUI',
@@ -297,7 +297,7 @@ var teams = {
     'pot': '4',
     'rank': '61',
     'hex': '#F2D900',
-    'stage': '4'
+    'stage': '3'
   }, {
     'country': 'Portugal',
     'code': 'POR',
@@ -321,7 +321,7 @@ var teams = {
     'pot': '2',
     'rank': '13',
     'hex': '#71A5D5',
-    'stage': '4'
+    'stage': '3'
   }]
 }
 

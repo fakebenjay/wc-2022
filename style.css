@@ -82,6 +82,11 @@
   color: #ED6A5A;
 }
 
+.buttons-radio {
+  border: 1px solid black;
+  display: inline-block;
+}
+
 svg {
   color: #373739;
   font-family: Arial, Helvetica, sans-serif;
