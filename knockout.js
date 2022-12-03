@@ -66,7 +66,8 @@ var teams = {
     'pot': '4',
     'rank': '46',
     'hex': '#ffdd00',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Netherlands',
     'code': 'NED',
@@ -74,7 +75,8 @@ var teams = {
     'pot': '2',
     'rank': '10',
     'hex': '#EB6920',
-    'stage': '4'
+    'stage': '5',
+    'status': 'in'
   }, {
     'country': 'Qatar',
     'code': 'QAT',
@@ -82,7 +84,8 @@ var teams = {
     'pot': '1',
     'rank': '51',
     'hex': '#8A1538',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Senegal',
     'code': 'SEN',
@@ -90,7 +93,8 @@ var teams = {
     'pot': '3',
     'rank': '20',
     'hex': '#00863D',
-    'stage': '4'
+    'stage': '4',
+    'status': 'out'
   }],
   'b': [{
     'country': 'England',
@@ -99,7 +103,8 @@ var teams = {
     'pot': '1',
     'rank': '5',
     'hex': '#CF081F',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Iran',
     'code': 'IRN',
@@ -107,7 +112,8 @@ var teams = {
     'pot': '3',
     'rank': '21',
     'hex': '#239f40',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'United States',
     'code': 'USA',
@@ -115,7 +121,8 @@ var teams = {
     'pot': '2',
     'rank': '15',
     'hex': '#3C3B6E',
-    'stage': '4'
+    'stage': '4',
+    'status': 'out'
   }, {
     'country': 'Wales',
     'code': 'WAL',
@@ -123,7 +130,8 @@ var teams = {
     'pot': '4',
     'rank': '18',
     'hex': '#174A3F',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }],
   'c': [{
     'country': 'Argentina',
@@ -132,7 +140,8 @@ var teams = {
     'pot': '1',
     'rank': '4',
     'hex': '#74ACDF',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Mexico',
     'code': 'MEX',
@@ -140,7 +149,8 @@ var teams = {
     'pot': '2',
     'rank': '9',
     'hex': '#006845',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Poland',
     'code': 'POL',
@@ -148,7 +158,8 @@ var teams = {
     'pot': '3',
     'rank': '26',
     'hex': '#DD0C39',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Saudi Arabia',
     'code': 'KSA',
@@ -156,7 +167,8 @@ var teams = {
     'pot': '4',
     'rank': '49',
     'hex': '#29A882',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }],
   'd': [{
     'country': 'Australia',
@@ -165,7 +177,8 @@ var teams = {
     'pot': '4',
     'rank': '42',
     'hex': '#FFCD00',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Denmark',
     'code': 'DEN',
@@ -173,7 +186,8 @@ var teams = {
     'pot': '2',
     'rank': '11',
     'hex': '#C9072A',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'France',
     'code': 'FRA',
@@ -181,7 +195,8 @@ var teams = {
     'pot': '1',
     'rank': '3',
     'hex': '#002153',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Tunisia',
     'code': 'TUN',
@@ -189,7 +204,8 @@ var teams = {
     'pot': '3',
     'rank': '35',
     'hex': '#e70013',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }],
   'e': [{
     'country': 'Costa Rica',
@@ -198,7 +214,8 @@ var teams = {
     'pot': '4',
     'rank': '31',
     'hex': '#E91115',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Germany',
     'code': 'GER',
@@ -206,7 +223,8 @@ var teams = {
     'pot': '2',
     'rank': '12',
     'hex': '#000000',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Japan',
     'code': 'JPN',
@@ -214,7 +232,8 @@ var teams = {
     'pot': '3',
     'rank': '23',
     'hex': '#020372',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Spain',
     'code': 'ESP',
@@ -222,7 +241,8 @@ var teams = {
     'pot': '1',
     'rank': '7',
     'hex': '#FFB700',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }],
   'f': [{
     'country': 'Belgium',
@@ -231,7 +251,8 @@ var teams = {
     'pot': '1',
     'rank': '2',
     'hex': '#F5D324',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Canada',
     'code': 'CAN',
@@ -239,7 +260,8 @@ var teams = {
     'pot': '3',
     'rank': '38',
     'hex': '#D62718',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Croatia',
     'code': 'CRO',
@@ -247,7 +269,8 @@ var teams = {
     'pot': '2',
     'rank': '16',
     'hex': '#171796',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Morocco',
     'code': 'MAR',
@@ -255,7 +278,8 @@ var teams = {
     'pot': '3',
     'rank': '24',
     'hex': '#006233',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }],
   'g': [{
     'country': 'Brazil',
@@ -264,7 +288,8 @@ var teams = {
     'pot': '1',
     'rank': '1',
     'hex': '#FEE000',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Cameroon',
     'code': 'CMR',
@@ -272,7 +297,8 @@ var teams = {
     'pot': '4',
     'rank': '37',
     'hex': '#054C40',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Serbia',
     'code': 'SRB',
@@ -280,7 +306,8 @@ var teams = {
     'pot': '3',
     'rank': '25',
     'hex': '#374C8A',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Switzerland',
     'code': 'SUI',
@@ -288,7 +315,8 @@ var teams = {
     'pot': '2',
     'rank': '14',
     'hex': '#FF0000',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }],
   'h': [{
     'country': 'Ghana',
@@ -297,7 +325,8 @@ var teams = {
     'pot': '4',
     'rank': '61',
     'hex': '#F2D900',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }, {
     'country': 'Portugal',
     'code': 'POR',
@@ -305,7 +334,8 @@ var teams = {
     'pot': '1',
     'rank': '8',
     'hex': '#006600',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'South Korea',
     'code': 'KOR',
@@ -313,7 +343,8 @@ var teams = {
     'pot': '3',
     'rank': '29',
     'hex': '#C00C2F',
-    'stage': '4'
+    'stage': '4',
+    'status': 'in'
   }, {
     'country': 'Uruguay',
     'code': 'URU',
@@ -321,7 +352,8 @@ var teams = {
     'pot': '2',
     'rank': '13',
     'hex': '#71A5D5',
-    'stage': '3'
+    'stage': '3',
+    'status': 'out'
   }]
 }
 
@@ -386,7 +418,7 @@ d3.csv("data-ko.csv")
             .data([csv.filter(d => !!d[`${g.code.toLowerCase()}${f.slice(0,1).toUpperCase() + f.slice(1)}`])])
             .text(g.flag)
             .attr("class", function(d) {
-              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              var out = g.status === 'out' ? ` out out-${g.stage}` : ''
               return `flag ${g.code.toLowerCase()}-${f} fate-${f}${out}`
             })
             .attr('x', margin.left / 2)
@@ -412,7 +444,7 @@ d3.csv("data-ko.csv")
             .data([csv.filter(d => !!d[`${g.code.toLowerCase()}${f.slice(0,1).toUpperCase() + f.slice(1)}`])])
             .append("path")
             .attr("class", function(d) {
-              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              var out = g.status === 'out' ? ` out out-${g.stage}` : ''
               return `line ${g.code.toLowerCase()}-${f} fate-${f}${out}`
             })
             .attr("d", function(d) {
@@ -442,7 +474,7 @@ d3.csv("data-ko.csv")
               return d.length == 8 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
             })
             .attr("class", function(d) {
-              var out = g.stage < currentStage ? ` out out-${g.stage}` : ''
+              var out = g.status === 'out' ? ` out out-${g.stage}` : ''
               return `odds ${g.code.toLowerCase()}-${f} fate-${f}${out}`
             })
             .style('font-size', (d) => {
@@ -454,8 +486,8 @@ d3.csv("data-ko.csv")
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
 
-              if (d.length === 3) {
-                return xScale(d.length - 2.5) + 5
+              if (d.length === 3 || d.length === 7) {
+                return xScale(d.length - 3.5) + 5
               } else if (d.length == 8 && f === 'win' && datapoint > 0) {
                 return xScale(3.5)
               } else {
