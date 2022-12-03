@@ -561,7 +561,7 @@ function getRadio() {
 
   if (teamVal === 'teams-phase') {
     if (val !== 'fate-win' && val !== 'fate-adv') {
-      var selectStage = parseInt(val.split('-')[1]) + 2
+      var selectStage = parseInt(val.split('-')[1]) + 1
     }
 
     for (let i = 0; i < selectStage + 1; i++) {
