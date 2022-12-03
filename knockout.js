@@ -95,7 +95,7 @@ var teams = {
     'rank': '20',
     'hex': '#00863D',
     'stage': '4',
-    'status': 'out'
+    'status': 'in'
   }],
   'b': [{
     'country': 'England',
@@ -141,7 +141,7 @@ var teams = {
     'pot': '1',
     'rank': '4',
     'hex': '#74ACDF',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'Mexico',
@@ -179,7 +179,7 @@ var teams = {
     'rank': '42',
     'hex': '#FFCD00',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Denmark',
     'code': 'DEN',
@@ -561,7 +561,7 @@ function getRadio() {
 
   if (teamVal === 'teams-phase') {
     if (val !== 'fate-win' && val !== 'fate-adv') {
-      var selectStage = parseInt(val.split('-')[1]) + 3
+      var selectStage = parseInt(val.split('-')[1]) + 2
     }
 
     for (let i = 0; i < selectStage + 1; i++) {
