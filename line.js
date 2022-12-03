@@ -340,6 +340,8 @@ d3.csv("data.csv")
 
 
 
+
+
       // Render lines g
       var linesG = svg.append("g")
         .attr('class', 'lines')

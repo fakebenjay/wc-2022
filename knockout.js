@@ -7,11 +7,12 @@
 var thisGroup
 var marginBottom = margin.bottom + 15
 var marginRight = margin.right + 5
+var marginLeft = margin.left + 20
 var koHeight = 1.5 * height
 
 var currentStage = 4
 var xScale = d3.scaleLinear()
-  .range([margin.left, width - marginRight])
+  .range([marginLeft, width - marginRight])
   .domain([0, 8])
 
 // Define X axis
@@ -55,7 +56,7 @@ var yAxis = d3.axisLeft(yScale)
   .tickFormat(d => numeral(d).format('0%'))
 
 var yGrid = d3.axisLeft(yScale)
-  .tickSize(-width + marginRight + margin.left, 0, 0)
+  .tickSize(-width + marginRight + marginLeft, 0, 0)
   .tickFormat("")
 
 var teams = {
@@ -370,7 +371,7 @@ d3.csv("data-ko.csv")
       .attr('preserveAspectRatio', `xMidYMid meet`)
     // Render Y grid
     svg.append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr("transform", `translate(${marginLeft},${margin.top})`)
       .attr("class", "grid")
       .style('color', '#777777')
       .style('opacity', '0.3')
@@ -378,7 +379,7 @@ d3.csv("data-ko.csv")
 
     // Render Y axis
     svg.append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr("transform", `translate(${marginLeft},${margin.top})`)
       .attr('class', 'y-axis')
       .call(yAxis)
       .selectAll("text")
@@ -391,7 +392,7 @@ d3.csv("data-ko.csv")
 
     // Render Y grid
     svg.append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`)
+      .attr("transform", `translate(${marginLeft},${margin.top})`)
       .attr("class", "grid")
       .style('color', '#777777')
       .style('opacity', '0.3')
@@ -407,6 +408,15 @@ d3.csv("data-ko.csv")
       .style('font-size', '10pt')
       .raise()
 
+
+    svg.append("text")
+      .attr("class", "y-label")
+      .attr("text-anchor", "end")
+      .attr("transform", `translate(${20},${(height-marginBottom)/2}) rotate(-90)`)
+      .style('font-size', '9pt')
+      .text("Odds of advancing through next stage");
+
+
     // Render lines g
     var linesG = svg.append("g")
       .attr('class', 'lines')
@@ -421,7 +431,7 @@ d3.csv("data-ko.csv")
               var out = g.status === 'out' ? ` out out-${g.stage}` : ''
               return `flag ${g.code.toLowerCase()}-${f} fate-${f}${out}`
             })
-            .attr('x', margin.left / 2)
+            .attr('x', marginLeft / 2)
             .attr('y', function(d) {
               console.log(d)
               return yScale(d[0][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
@@ -486,8 +496,8 @@ d3.csv("data-ko.csv")
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
 
-              if (d.length === 3 || d.length === 7) {
-                return xScale(d.length - 3.5) + 5
+              if (d.length === 3) {
+                return xScale(d.length - 2.5) + 5
               } else if (d.length == 8 && f === 'win' && datapoint > 0) {
                 return xScale(3.5)
               } else {
