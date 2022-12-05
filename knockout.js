@@ -234,7 +234,7 @@ var teams = {
     'rank': '23',
     'hex': '#020372',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Spain',
     'code': 'ESP',
@@ -270,7 +270,7 @@ var teams = {
     'pot': '2',
     'rank': '16',
     'hex': '#171796',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'Morocco',
