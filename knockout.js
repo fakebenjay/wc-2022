@@ -289,7 +289,7 @@ var teams = {
     'pot': '1',
     'rank': '1',
     'hex': '#FEE000',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'Cameroon',
@@ -345,7 +345,7 @@ var teams = {
     'rank': '29',
     'hex': '#C00C2F',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Uruguay',
     'code': 'URU',
