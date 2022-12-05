@@ -95,7 +95,7 @@ var teams = {
     'rank': '20',
     'hex': '#00863D',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }],
   'b': [{
     'country': 'England',
@@ -104,7 +104,7 @@ var teams = {
     'pot': '1',
     'rank': '5',
     'hex': '#CF081F',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'Iran',
@@ -160,7 +160,7 @@ var teams = {
     'rank': '26',
     'hex': '#DD0C39',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Saudi Arabia',
     'code': 'KSA',
@@ -196,7 +196,7 @@ var teams = {
     'pot': '1',
     'rank': '3',
     'hex': '#002153',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'Tunisia',
