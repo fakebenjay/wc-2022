@@ -547,6 +547,8 @@ d3.csv("data-ko.csv")
   })
   .then(function() {
     getRadio()
+    d3.selectAll('.odds')
+      .raise()
   })
 
 function getRadio() {
