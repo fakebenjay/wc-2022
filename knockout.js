@@ -13,7 +13,7 @@ var koHeight = 1.5 * height
 var currentStage = 4
 var xScale = d3.scaleLinear()
   .range([marginLeft, width - marginRight])
-  .domain([0, 8])
+  .domain([0, 7])
 
 // Define X axis
 var xAxis = d3.axisBottom(xScale)
@@ -34,9 +34,9 @@ var xAxis = d3.axisBottom(xScale)
     } else if (d == 6) {
       return 'Semis'
     } else if (d == 7) {
-      return 'Final'
-    } else {
       return '🏆'
+    } else {
+      return ''
     }
   })
 
@@ -411,10 +411,10 @@ d3.csv("data-ko.csv")
 
     svg.append("text")
       .attr("class", "y-label")
-      .attr("text-anchor", "end")
-      .attr("transform", `translate(${20},${(height-marginBottom)/2}) rotate(-90)`)
+      .attr("text-anchor", "middle")
+      .attr("transform", `translate(${20},${(height) - marginBottom - margin.top}) rotate(-90)`)
       .style('font-size', '9pt')
-      .text("Odds of advancing through next stage");
+      .text("Odds of advancing");
 
 
     // Render lines g
