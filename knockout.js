@@ -5,7 +5,7 @@
 //   .attr('id', 'tooltip')
 
 var thisGroup
-var marginBottom = margin.bottom + 15
+var marginBottom = margin.bottom + 40
 var marginRight = margin.right + 5
 var marginLeft = margin.left + 20
 var koHeight = 1.5 * height
@@ -243,7 +243,7 @@ var teams = {
     'rank': '7',
     'hex': '#FFB700',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }],
   'f': [{
     'country': 'Belgium',
@@ -279,7 +279,7 @@ var teams = {
     'pot': '3',
     'rank': '24',
     'hex': '#006233',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }],
   'g': [{
@@ -412,9 +412,16 @@ d3.csv("data-ko.csv")
     svg.append("text")
       .attr("class", "y-label")
       .attr("text-anchor", "middle")
-      .attr("transform", `translate(${20},${(height) - marginBottom - margin.top}) rotate(-90)`)
-      .style('font-size', '9pt')
+      .attr("transform", `translate(${20},${(koHeight/2) + margin.top - marginBottom}) rotate(-90)`)
+      .style('font-size', '12pt')
       .text("Odds of advancing");
+
+    svg.append("text")
+      .attr("class", "x-label")
+      .attr("text-anchor", "middle")
+      .attr("transform", `translate(${width/2},${(koHeight) - margin.bottom})`)
+      .style('font-size', '12pt')
+      .text("Latest round completed");
 
 
     // Render lines g
