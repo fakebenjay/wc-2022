@@ -550,7 +550,7 @@ d3.csv("data-ko.csv")
       .attr('y1', yScale(0) + margin.top)
       .attr('y2', yScale(1) + margin.top)
       .style('stroke', 'black')
-      .style('stroke-width', '4px')
+      .style('stroke-width', '8px')
   })
   .then(function() {
     getRadio()
