@@ -317,7 +317,7 @@ var teams = {
     'rank': '14',
     'hex': '#FF0000',
     'stage': '4',
-    'status': 'in'
+    'status': 'out'
   }],
   'h': [{
     'country': 'Ghana',
@@ -335,7 +335,7 @@ var teams = {
     'pot': '1',
     'rank': '8',
     'hex': '#006600',
-    'stage': '4',
+    'stage': '5',
     'status': 'in'
   }, {
     'country': 'South Korea',
