@@ -10,7 +10,7 @@ var marginRight = margin.right + 5
 var marginLeft = margin.left + 20
 var koHeight = 1.5 * height
 
-var currentStage = 4
+// var currentStage = 4
 var xScale = d3.scaleLinear()
   .range([marginLeft, width - marginRight])
   .domain([0, 7])
@@ -270,7 +270,7 @@ var teams = {
     'pot': '2',
     'rank': '16',
     'hex': '#171796',
-    'stage': '5',
+    'stage': '6',
     'status': 'in'
   }, {
     'country': 'Morocco',
@@ -290,7 +290,7 @@ var teams = {
     'rank': '1',
     'hex': '#FEE000',
     'stage': '5',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Cameroon',
     'code': 'CMR',
@@ -477,9 +477,9 @@ d3.csv("data-ko.csv")
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
 
-              if (d.length == 8 && f === 'win' && datapoint > 0) {
+              if (d.length == 10 && f === 'win' && datapoint > 0) {
                 return g.flag + numeral(datapoint).format('0[.]00%')
-              } else if (d.length == 8 && f === 'win' && datapoint == 0) {
+              } else if (d.length == 10 && f === 'win' && datapoint == 0) {
                 return ''
               } else {
                 return numeral(datapoint).format('0[.]00%') + ' ' + g.flag
@@ -488,7 +488,7 @@ d3.csv("data-ko.csv")
             .style('text-anchor', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 8 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
+              return d.length == 10 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
             })
             .attr("class", function(d) {
               var out = g.status === 'out' ? ` out out-${g.stage}` : ''
@@ -497,7 +497,7 @@ d3.csv("data-ko.csv")
             .style('font-size', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 8 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
+              return d.length == 10 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
             })
             .attr('x', function(d) {
               var latest = d[d.length - 1]
@@ -505,7 +505,7 @@ d3.csv("data-ko.csv")
 
               if (d.length === 3) {
                 return xScale(d.length - 2.5) + 5
-              } else if (d.length == 8 && f === 'win' && datapoint > 0) {
+              } else if (d.length == 10 && f === 'win' && datapoint > 0) {
                 return xScale(3.5)
               } else {
                 var subtract = d.length > 5 ? 3 : 2
@@ -518,9 +518,9 @@ d3.csv("data-ko.csv")
               var firstpoint = latest[g.code.toLowerCase() + '1']
               var secondpoint = latest[g.code.toLowerCase() + '2']
 
-              if (d.length == 8 && f === 'win' && firstpoint == 1) {
+              if (d.length == 10 && f === 'win' && firstpoint == 1) {
                 return yScale(.6)
-              } else if (d.length == 8 && f === 'win' && secondpoint == 1) {
+              } else if (d.length == 10 && f === 'win' && secondpoint == 1) {
                 return yScale(.3)
               } else {
                 return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
@@ -530,12 +530,12 @@ d3.csv("data-ko.csv")
             // .style('stroke', (d) => {
             //   var latest = d[d.length - 1]
             //   var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-            //   return d.length == 8 && f === 'win' && datapoint > 0 ? 'none' : 'black'
+            //   return d.length == 10 && f === 'win' && datapoint > 0 ? 'none' : 'black'
             // })
             // .style('stroke-width', (d) => {
             //   var latest = d[d.length - 1]
             //   var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-            //   return d.length == 8 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
+            //   return d.length == 10 && f === 'win' && datapoint > 0 ? 'none' : '.1px'
             // })
             .lower()
 
@@ -574,7 +574,7 @@ function getRadio() {
     if (val !== 'fate-win' && val !== 'fate-adv') {
       var selectStage = parseInt(val.split('-')[1]) + 1
     } else if (val === 'fate-adv') {
-      var selectStage = 3
+      var selectStage = 4
     }
 
     for (let i = 0; i < selectStage + 1; i++) {
