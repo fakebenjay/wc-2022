@@ -15,39 +15,46 @@
 </head>
 
 <body>
-  <div class="buttons-radio">
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-adv" name="fate" value="fate-adv" checked>&nbsp;<label for="fate-adv">Next round</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-1" name="fate" value="fate-1">&nbsp;<label for="fate-1">Round of 16</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-2" name="fate" value="fate-2">&nbsp;<label for="fate-1">Quarterfinals</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-3" name="fate" value="fate-3">&nbsp;<label for="fate-2">Semifinals</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-4" name="fate" value="fate-4">&nbsp;<label for="fate-3">Finals</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="fate-win" name="fate" value="fate-win">&nbsp;<label for="fate-win">🏆</label>
-    </span>
-  </div>
-  <br />
-  <div class="buttons-radio">
-    <span style="display:inline-block;">
-      <input type="radio" id="teams-all" name="teams" value="teams-all">&nbsp;<label for="teams-all">All teams</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="teams-active" name="teams" value="teams-active" checked>&nbsp;<label for="teams-active">Active teams</label>
-    </span>&nbsp;
-    <span style="display:inline-block;">
-      <input type="radio" id="teams-phase" name="teams" value="teams-phase">&nbsp;<label for="teams-phase">Teams trying for selected stage</label>
-    </span>&nbsp;
-  </div>
   <div id="article">
+    <div class="buttons-radio">
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-adv" name="fate" value="fate-adv" checked>&nbsp;<label for="fate-adv">Next round</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-1" name="fate" value="fate-1">&nbsp;<label for="fate-1">Round of 16</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-2" name="fate" value="fate-2">&nbsp;<label for="fate-1">Quarterfinals</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-3" name="fate" value="fate-3">&nbsp;<label for="fate-2">Semifinals</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-4" name="fate" value="fate-4">&nbsp;<label for="fate-3">Finals</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="fate-win" name="fate" value="fate-win">&nbsp;<label for="fate-win">🏆</label>
+      </span>
+    </div>
+    <br />
+    <div class="buttons-radio">
+      <span style="display:inline-block;">
+        <input type="radio" id="teams-all" name="teams" value="teams-all">&nbsp;<label for="teams-all">All teams</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="teams-ko" name="teams" value="teams-ko">&nbsp;<label for="teams-ko">Teams in knockout round</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="teams-qf" name="teams" value="teams-qf">&nbsp;<label for="teams-ko">Teams in quarterfinals</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="teams-active" name="teams" value="teams-active" checked>&nbsp;<label for="teams-active">Active teams</label>
+      </span>&nbsp;
+      <span style="display:inline-block;">
+        <input type="radio" id="teams-phase" name="teams" value="teams-phase">&nbsp;<label for="teams-phase">Teams trying for selected stage</label>
+      </span>&nbsp;
+    </div>
+
     <div class="d3-container" id="groups">
       <div class="chart">
         <span class="group group-ko"></span>

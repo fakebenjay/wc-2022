@@ -77,7 +77,7 @@ var teams = {
     'rank': '10',
     'hex': '#EB6920',
     'stage': '5',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Qatar',
     'code': 'QAT',
@@ -141,7 +141,7 @@ var teams = {
     'pot': '1',
     'rank': '4',
     'hex': '#74ACDF',
-    'stage': '5',
+    'stage': '6',
     'status': 'in'
   }, {
     'country': 'Mexico',
@@ -564,16 +564,28 @@ function getRadio() {
   var val = document.querySelector('input[name=fate]:checked').value
   var teamVal = document.querySelector('input[name=teams]:checked').value
 
+  // if (val !== 'fate-win' && val !== 'fate-adv') {
+  //   document.querySelector('label[for=teams-phase]').innerText = 'Teams trying for selected stage'
+  // } else {
+  //   document.querySelector('label[for=teams-phase]').innerText = 'All teams in knockout rounds'
+  // }
+
   d3.selectAll('.flag, .line, .odds')
     .style('display', 'none')
 
   d3.selectAll(`.${val}`)
     .style('display', 'block')
 
-  if (teamVal === 'teams-phase') {
-    if (val !== 'fate-win' && val !== 'fate-adv') {
-      var selectStage = parseInt(val.split('-')[1]) + 1
-    } else if (val === 'fate-adv') {
+  if (teamVal === 'teams-phase' || teamVal === 'teams-ko' || teamVal === 'teams-qf') {
+    if (teamVal === 'teams-phase') {
+      if (val !== 'fate-win' && val !== 'fate-adv') {
+        var selectStage = parseInt(val.split('-')[1]) + 1
+      } else if (val === 'fate-adv' || val === 'fate-win') {
+        var selectStage = 0
+      }
+    } else if (teamVal === 'teams-ko') {
+      var selectStage = 3
+    } else if (teamVal === 'teams-qf') {
       var selectStage = 4
     }
 
@@ -585,9 +597,6 @@ function getRadio() {
     d3.selectAll(`.odds.out, .line.out, .flag.out`)
       .style('display', 'none')
   }
-
-
-
 }
 
 getRadio()
