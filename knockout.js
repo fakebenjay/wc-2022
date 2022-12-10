@@ -279,7 +279,7 @@ var teams = {
     'pot': '3',
     'rank': '24',
     'hex': '#006233',
-    'stage': '5',
+    'stage': '6',
     'status': 'in'
   }],
   'g': [{
@@ -336,7 +336,7 @@ var teams = {
     'rank': '8',
     'hex': '#006600',
     'stage': '5',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'South Korea',
     'code': 'KOR',
