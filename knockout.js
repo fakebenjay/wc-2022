@@ -105,7 +105,7 @@ var teams = {
     'rank': '5',
     'hex': '#CF081F',
     'stage': '5',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Iran',
     'code': 'IRN',
@@ -196,7 +196,7 @@ var teams = {
     'pot': '1',
     'rank': '3',
     'hex': '#002153',
-    'stage': '5',
+    'stage': '6',
     'status': 'in'
   }, {
     'country': 'Tunisia',
