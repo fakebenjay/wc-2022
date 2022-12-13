@@ -141,7 +141,7 @@ var teams = {
     'pot': '1',
     'rank': '4',
     'hex': '#74ACDF',
-    'stage': '6',
+    'stage': '7',
     'status': 'in'
   }, {
     'country': 'Mexico',
@@ -271,7 +271,7 @@ var teams = {
     'rank': '16',
     'hex': '#171796',
     'stage': '6',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Morocco',
     'code': 'MAR',
@@ -576,7 +576,7 @@ function getRadio() {
   d3.selectAll(`.${val}`)
     .style('display', 'block')
 
-  if (teamVal === 'teams-phase' || teamVal === 'teams-ko' || teamVal === 'teams-qf') {
+  if (teamVal === 'teams-phase' || teamVal === 'teams-ko' || teamVal === 'teams-qf' || teamVal === 'teams-semi') {
     if (teamVal === 'teams-phase') {
       if (val !== 'fate-win' && val !== 'fate-adv') {
         var selectStage = parseInt(val.split('-')[1]) + 1
@@ -587,6 +587,8 @@ function getRadio() {
       var selectStage = 3
     } else if (teamVal === 'teams-qf') {
       var selectStage = 4
+    } else if (teamVal === 'teams-semi') {
+      var selectStage = 5
     }
 
     for (let i = 0; i < selectStage + 1; i++) {
