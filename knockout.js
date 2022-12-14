@@ -196,7 +196,7 @@ var teams = {
     'pot': '1',
     'rank': '3',
     'hex': '#002153',
-    'stage': '6',
+    'stage': '7',
     'status': 'in'
   }, {
     'country': 'Tunisia',
@@ -280,7 +280,7 @@ var teams = {
     'rank': '24',
     'hex': '#006233',
     'stage': '6',
-    'status': 'in'
+    'status': 'out'
   }],
   'g': [{
     'country': 'Brazil',
