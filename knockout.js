@@ -141,7 +141,7 @@ var teams = {
     'pot': '1',
     'rank': '4',
     'hex': '#74ACDF',
-    'stage': '7',
+    'stage': '8',
     'status': 'in'
   }, {
     'country': 'Mexico',
@@ -197,7 +197,7 @@ var teams = {
     'rank': '3',
     'hex': '#002153',
     'stage': '7',
-    'status': 'in'
+    'status': 'out'
   }, {
     'country': 'Tunisia',
     'code': 'TUN',
@@ -477,18 +477,14 @@ d3.csv("data-ko.csv")
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
 
-              if (d.length == 10 && f === 'win' && datapoint > 0) {
-                return g.flag + numeral(datapoint).format('0[.]00%')
-              } else if (d.length == 10 && f === 'win' && datapoint == 0) {
-                return ''
-              } else {
-                return numeral(datapoint).format('0[.]00%') + ' ' + g.flag
-              }
+              return numeral(datapoint).format('0[.]00%') + ' ' + g.flag
+
             })
             .style('text-anchor', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 10 && f === 'win' && datapoint > 0 ? 'middle' : 'start'
+
+              return d.length > 9 ? 'end' : 'start'
             })
             .attr("class", function(d) {
               var out = g.status === 'out' ? ` out out-${g.stage}` : ''
@@ -497,18 +493,20 @@ d3.csv("data-ko.csv")
             .style('font-size', (d) => {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-              return d.length == 10 && f === 'win' && datapoint > 0 ? '12pt' : '8pt'
+              return d.length > 9 ? '8pt' : '8pt'
             })
             .attr('x', function(d) {
               var latest = d[d.length - 1]
               var datapoint = latest[g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]
-
+              var subtract = d.length > 5 ? 3 : 2
               if (d.length === 3) {
-                return xScale(d.length - 2.5) + 5
-              } else if (d.length == 10 && f === 'win' && datapoint > 0) {
-                return xScale(3.5)
+
+                return xScale(d.length - subtract) + 5
+              } else if (d.length > 9) {
+
+                return xScale(d.length - subtract) - 7
               } else {
-                var subtract = d.length > 5 ? 3 : 2
+
                 return xScale(d.length - subtract) + 5
               }
             })
@@ -518,10 +516,12 @@ d3.csv("data-ko.csv")
               var firstpoint = latest[g.code.toLowerCase() + '1']
               var secondpoint = latest[g.code.toLowerCase() + '2']
 
-              if (d.length == 10 && f === 'win' && firstpoint == 1) {
-                return yScale(.6)
-              } else if (d.length == 10 && f === 'win' && secondpoint == 1) {
-                return yScale(.3)
+              if (d.length == 9 && f === 'win' && firstpoint == 1) {
+                return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
+
+              } else if (d.length == 9 && f === 'win' && secondpoint == 1) {
+                return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
+
               } else {
                 return yScale(d[d.length - 1][g.code.toLowerCase() + f.slice(0, 1).toUpperCase() + f.slice(1)]) + margin.top + (this.getBoundingClientRect().height / 3)
               }
@@ -576,7 +576,7 @@ function getRadio() {
   d3.selectAll(`.${val}`)
     .style('display', 'block')
 
-  if (teamVal === 'teams-phase' || teamVal === 'teams-ko' || teamVal === 'teams-qf' || teamVal === 'teams-semi') {
+  if (teamVal === 'teams-phase' || teamVal === 'teams-ko' || teamVal === 'teams-qf' || teamVal === 'teams-semi' || teamVal === 'teams-final') {
     if (teamVal === 'teams-phase') {
       if (val !== 'fate-win' && val !== 'fate-adv') {
         var selectStage = parseInt(val.split('-')[1]) + 1
@@ -589,6 +589,8 @@ function getRadio() {
       var selectStage = 4
     } else if (teamVal === 'teams-semi') {
       var selectStage = 5
+    } else if (teamVal === 'teams-final') {
+      var selectStage = 6
     }
 
     for (let i = 0; i < selectStage + 1; i++) {
